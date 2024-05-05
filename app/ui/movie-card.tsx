@@ -11,7 +11,7 @@ export default function MovieCard() {
         style={{ backgroundImage: "url('movie.jpeg')" }}
         className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] "
       >
-        <div className="px-[10px] flex w-full justify-between pb-[10px] absolute bottom-0">
+        <div className="px-[10px] flex w-full justify-between items-center pb-[10px] absolute bottom-0">
           <span className="font-bold text-lg tracking-wide">{movie.name}</span>
           <span
             className={`${
