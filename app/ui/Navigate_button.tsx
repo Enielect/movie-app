@@ -6,6 +6,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export default function Button({ children, className, ...rest }: ButtonProps) {
   return (
     <button
+      {...rest}
       className={clsx(
         "w-[40px] h-[40px] rounded-full grid place-items-center fixed bottom-[20px]",
         className
@@ -16,4 +17,4 @@ export default function Button({ children, className, ...rest }: ButtonProps) {
   );
 }
 
-positionC: ;
+positionC:;
