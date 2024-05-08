@@ -1,28 +1,35 @@
 import Image from "next/image";
 
-const movie = {
-  rating: 9,
-  name: "Fighter",
-};
-export default function MovieCard() {
+
+const BASE_URL = "https://image.tmdb.org/t/p/w500";
+
+export default function MovieCard({
+  title,
+  src,
+  rating,
+}: {
+  title: string;
+  src: string;
+  rating: number;
+}) {
   return (
     <div>
       <div
-        style={{ backgroundImage: "url('movie.jpeg')" }}
+        style={{ backgroundImage: `url('${BASE_URL}${src}')` }}
         className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] "
       >
         <div className="px-[10px] flex w-full justify-between items-center pb-[10px] absolute bottom-0">
-          <span className="font-bold text-lg tracking-wide">{movie.name}</span>
+          <span className="font-bold text-lg tracking-wide">{title}</span>
           <span
             className={`${
-              movie.rating <= 5
+              rating <= 5
                 ? "text-red-600"
-                : movie.rating > 5 && movie.rating < 8
+                : rating > 5 && rating < 8
                 ? "text-blue-600"
                 : "text-green-500"
             } bg-black px-4 font-bold text-xl py-2 rounded-full`}
           >
-            {movie.rating}
+            {Math.round(rating)}
           </span>
         </div>
       </div>
