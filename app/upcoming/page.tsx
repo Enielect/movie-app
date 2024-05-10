@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <GoBack />
-      This is the trending page
+      This is the About page
     </div>
   );
 }

@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 export function GoBack() {
   const router = useRouter();
   return (
-    <button onClick={() => router.back()} className="bg-white w-[30px] h-[30px] grid place-items-center rounded-full">
+    <button
+      onClick={() => router.back()}
+      className="bg-white w-[30px] h-[30px] grid place-items-center rounded-full"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
