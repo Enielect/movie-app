@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Button from "@/app/ui/Navigate_button";
 import SideMenu from "@/app/ui/mobile/side-menu";
+import { useWindowScroll } from "@uidotdev/usehooks";
 
 export default function ShowSideBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [{ x, y }, scrollTo] = useWindowScroll();
+  // const [scroll, setScroll] = useState(0);
 
   return (
     <div>
@@ -36,7 +39,10 @@ export default function ShowSideBar() {
           </svg>
         )}
       </Button>
-      <Button className="right-[15px] bg-red-300">
+      <Button
+        className={`right-[15px] bg-red-300 ${y > 6000 ? "block" : "hidden"}`}
+        onClick={() => scrollTo({ left: 0, top: 0, behavior: "smooth" })}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
