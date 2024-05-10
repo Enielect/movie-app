@@ -4,24 +4,16 @@ import { useContext, useEffect, useState } from "react";
 import MovieCard from "./movie-card";
 import axios from "axios";
 import { Context } from "../contexts/GenreProvider";
+import Loader from "./Loader";
 
-interface GenreContextType {
-  genreId: number;
-  setGenreId: React.Dispatch<React.SetStateAction<number>>;
-}
-
-interface Movies {
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  id: number;
-}
 const url =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
 
 export default function MovieWrapper({ movies }: { movies: Movies[] }) {
-  const { genreId } = useContext(Context) as GenreContextType;
-  const [moviesGenreFilter, setMovies] = useState<Movies[]>();
+  const { genreId, loading, setLoading } = useContext(
+    Context
+  ) as GenreContextType;
+  const [moviesGenreFilter, setMovies] = useState<Movies[]>([]);
 
   useEffect(() => {
     async function fetchMovies() {
@@ -32,13 +24,15 @@ export default function MovieWrapper({ movies }: { movies: Movies[] }) {
       });
       console.log(response.data.results);
       setMovies(response.data.results);
+      setLoading(false);
     }
     fetchMovies();
   }, [genreId]);
 
   return (
     <div className="mx-[15px] space-y-[10px]">
-      {moviesGenreFilter && moviesGenreFilter.length > 0
+      {loading && <Loader />}
+      {/* {moviesGenreFilter && moviesGenreFilter.length > 0 && !loading
         ? moviesGenreFilter?.map((movie) => (
             <MovieCard
               key={movie.id}
@@ -54,7 +48,27 @@ export default function MovieWrapper({ movies }: { movies: Movies[] }) {
               rating={movie.vote_average}
               title={movie.title}
             />
-          ))}
+          ))} */}
+      {!loading &&
+        moviesGenreFilter.length === 0 &&
+        movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            src={movie.poster_path}
+            rating={movie.vote_average}
+            title={movie.title}
+          />
+        ))}
+      {!loading &&
+        moviesGenreFilter.length > 0 &&
+        moviesGenreFilter.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            src={movie.poster_path}
+            rating={movie.vote_average}
+            title={movie.title}
+          />
+        ))}
     </div>
   );
 }
