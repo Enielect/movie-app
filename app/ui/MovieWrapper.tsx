@@ -32,23 +32,7 @@ export default function MovieWrapper({ movies }: { movies: Movies[] }) {
   return (
     <div className="mx-[15px] space-y-[10px]">
       {loading && <Loader />}
-      {/* {moviesGenreFilter && moviesGenreFilter.length > 0 && !loading
-        ? moviesGenreFilter?.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              src={movie?.poster_path}
-              rating={movie?.vote_average}
-              title={movie.title}
-            />
-          ))
-        : movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              src={movie.poster_path}
-              rating={movie.vote_average}
-              title={movie.title}
-            />
-          ))} */}
+
       {!loading &&
         moviesGenreFilter.length === 0 &&
         movies.map((movie) => (
