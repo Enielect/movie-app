@@ -3,27 +3,23 @@ import SearchMobile from "@/app/ui/mobile/search";
 import MovieCard from "@/app/ui/movie-card";
 import { fetchPopularMovies } from "@/tmdb";
 import axios, { Axios } from "axios";
+import GenreProvider from "./contexts/GenreProvider";
+import MovieWrapper from "./ui/MovieWrapper";
 
 //wnat i noticed here, you can't use async/await in a client component.
 
 export default async function Page() {
   const movies = await fetchPopularMovies();
-  console.log(movies);
+  // console.log(movies);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#03030a]">
+      {/* included the genreprovider to update the genre id on click of a particular genre button */}
       {/* add the side menu */}
       <SearchMobile />
       <GenreList />
-      <div className="mx-[15px] space-y-[10px]">
-        {movies?.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            src={movie?.poster_path}
-            rating={movie?.vote_average}
-            title={movie.title}
-          />
-        ))}
+      <div>
+        <MovieWrapper movies={movies} />
       </div>
     </div>
   );
