@@ -10,9 +10,11 @@ export default function GenreProvider({
   children: React.ReactNode;
 }) {
   const [genreId, setGenreId] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [genres, setGenres] = useState<Genre[]>([]);
+
   return (
-    <Context.Provider value={{ genreId, setGenreId, loading, setLoading }}>
+    <Context.Provider value={{ genreId, setGenreId, loading, setLoading, genres, setGenres }}>
       {children}
     </Context.Provider>
   );
