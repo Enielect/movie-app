@@ -19,7 +19,7 @@ export default async function Page() {
       <SearchMobile />
       <GenreList />
       <div>
-        <MovieWrapper movies={movies} />
+        <MovieWrapper/>
       </div>
     </div>
   );
