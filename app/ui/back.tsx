@@ -7,7 +7,7 @@ export function GoBack() {
   return (
     <button
       onClick={() => router.back()}
-      className="bg-white w-[30px] h-[30px] grid place-items-center rounded-full"
+      className="bg-white w-[30px] h-[30px] grid place-items-center rounded-full  ml-3 mt-4 fixed"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
