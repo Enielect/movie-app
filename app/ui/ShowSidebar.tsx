@@ -40,7 +40,7 @@ export default function ShowSideBar() {
         )}
       </Button>
       <Button
-        className={`right-[15px] bg-red-300 ${y > 6000 ? "block" : "hidden"}`}
+        className={`right-[15px] bg-red-300 ${y !== null && y > 6000 ? "block" : "hidden"}`}
         onClick={() => scrollTo({ left: 0, top: 0, behavior: "smooth" })}
       >
         <svg
