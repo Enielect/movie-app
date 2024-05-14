@@ -7,16 +7,20 @@ export default async function Page() {
   const movies = await fetchPopularMovies();
 
   return (
-    <div>
-      <GoBack />
-      {movies.map((movie: Movies) => (
-        <MovieCard
-          key={movie.id}
-          src={movie.poster_path}
-          rating={movie.vote_average}
-          title={movie.title}
-        />
-      ))}
+    <div className="p-[20px]">
+      {/* <GoBack /> */}
+      <h1 className="text-2xl py-[20px]">Trending Movies</h1>
+      <div className="flex flex-col gap-[14px]">
+        {movies.map((movie: Movies) => (
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            src={movie.poster_path}
+            rating={movie.vote_average}
+            title={movie.title}
+          />
+        ))}
+      </div>
     </div>
   );
 }
