@@ -1,22 +1,23 @@
-import Image from "next/image";
-
-
-const BASE_URL = "https://image.tmdb.org/t/p/w500";
+import Link from "next/link";
+import { BASE_IMAGE_URL } from "../constants/constants";
 
 export default function MovieCard({
   title,
   src,
   rating,
+  id,
 }: {
   title: string;
   src: string;
   rating: number;
+  id: number;
 }) {
   return (
-    <div>
+    //learned how to use the transition better with tailwind for changing background size
+    <Link href={`/moviedetail/${id}`}>
       <div
-        style={{ backgroundImage: `url('${BASE_URL}${src}')` }}
-        className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] "
+        style={{ backgroundImage: `url('${BASE_IMAGE_URL}${src}')` }}
+        className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] overflow-hidden duration-200 ease-in-out hover:bg-[length:105%]"
       >
         <div className="px-[10px] flex w-full justify-between items-center pb-[10px] absolute bottom-0">
           <span className="font-bold text-lg tracking-wide">{title}</span>
@@ -33,6 +34,6 @@ export default function MovieCard({
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
