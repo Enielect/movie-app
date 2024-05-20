@@ -33,7 +33,9 @@ body {
   }
 }
 
-
+.bg-zoomed {
+  background-size: 120%;
+}
 
 
 

@@ -6,15 +6,17 @@ export default function MovieCard({
   src,
   rating,
   id,
+  className
 }: {
   title: string;
   src: string;
   rating: number;
   id: number;
+  className: string;
 }) {
   return (
     //learned how to use the transition better with tailwind for changing background size
-    <Link href={`/moviedetail/${id}`}>
+    <Link href={`/moviedetail/${id}`} className={className}>
       <div
         style={{ backgroundImage: `url('${BASE_IMAGE_URL}${src}')` }}
         className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] overflow-hidden duration-200 ease-in-out hover:bg-[length:105%]"
