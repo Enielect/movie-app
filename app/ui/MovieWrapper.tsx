@@ -5,14 +5,20 @@ import MovieCard from "./movie-card";
 import axios from "axios";
 import { Context } from "../contexts/GenreProvider";
 import Loader from "./Loader";
-import { useFetchMovies } from "../hooks/fetchMovies";
+import { url, useFetchMovies } from "../hooks/fetchMovies";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useFetchMoreMovies } from "../hooks/fetchMoreMovies";
+import useSearchedStore from "../store/searchStore";
 
 // { movies }: { movies: Movies[] }
 export default function MovieWrapper() {
-  const { loading } = useContext(Context) as GenreContextType;
+  const { loading, genreId } = useContext(Context) as GenreContextType;
+  const genreUrl = `${url}&with_genres=${genreId}`;
 
-  const { moviesGenreFilter, fetchMoreData, hasMore } = useFetchMovies();
+  const { moviesGenreFilter, setMovies } = useFetchMovies();
+  const { fetchMoreData, hasMore } = useFetchMoreMovies(setMovies);
+  const { searchedMovies } = useSearchedStore() as { searchedMovies: Movies[] };
+  useEffect(() => console.log(searchedMovies), [searchedMovies]);
 
   return (
     <div className="mx-[15px]">
@@ -20,21 +26,31 @@ export default function MovieWrapper() {
       <InfiniteScroll
         hasMore={hasMore}
         dataLength={moviesGenreFilter.length}
-        next={fetchMoreData}
+        next={() => fetchMoreData(genreUrl)}
         loader={<Loader />}
       >
         {/* we were having a problem with lagging in the scrolling and the solution was just to remove the div and render the elements directly */}
-        {!loading &&
-          moviesGenreFilter.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              src={movie.poster_path}
-              rating={movie.vote_average}
-              title={movie.title}
-              id={movie.id}
-              className="mx-[15px]"
-            />
-          ))}
+        {!loading && searchedMovies.length === 0
+          ? moviesGenreFilter.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                src={movie.poster_path}
+                rating={movie.vote_average}
+                title={movie.title}
+                id={movie.id}
+                className="mx-[15px]"
+              />
+            ))
+          : searchedMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                src={movie.poster_path}
+                rating={movie.vote_average}
+                title={movie.title}
+                id={movie.id}
+                className="mx-[15px]"
+              />
+            ))}
       </InfiniteScroll>
     </div>
   );
