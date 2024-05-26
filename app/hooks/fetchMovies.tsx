@@ -11,7 +11,6 @@ export function useFetchMovies() {
   ) as GenreContextType;
   const [moviesGenreFilter, setMovies] = useState<Movies[]>([]);
 
-  console.log(genreId, "this is the genre id");
   useEffect(() => {
     async function fetchMovies() {
       setLoading(true);
@@ -31,10 +30,10 @@ export function useFetchMovies() {
 
   
 
-  useEffect(() => {
-    console.log(moviesGenreFilter);
-    console.log(genreId);
-  }, [moviesGenreFilter, genreId]);
+  // useEffect(() => {
+  //   console.log(moviesGenreFilter);
+  //   console.log(genreId);
+  // }, [moviesGenreFilter, genreId]);
 
   return { moviesGenreFilter, setMovies};
 }

@@ -11,7 +11,7 @@ export default async function Page() {
   // console.log(movies);
 
   return (
-    <div className="bg-[#03030a]">
+    <div className="bg-[#03030a] overflow-auto">
       {/* included the genreprovider to update the genre id on click of a particular genre button */}
       {/* add the side menu */}
       <SearchMobile />

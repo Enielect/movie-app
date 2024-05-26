@@ -27,10 +27,8 @@ export default function GenreList() {
         setGenreId(genresFetch.data.genres[1].id);
         setGenreLoading(false);
 
-        console.log("the geres shown below", genresFetch.data.genres);
       } catch (error) {
         console.error(error);
-        console.log(error, "This is the error i am facing");
       }
     }
     fetchGenres();

@@ -40,7 +40,7 @@ export default function MovieDetail({ movie }: { movie: Movies }) {
       </div>
       {/* {credits.cast(cast => )} */}
       <p className="font-bold py-6 text-center text-2xl">Cast</p>
-      <div className="flex gap-3 w-full px-3 overflow-scroll">
+      <div className="flex gap-3 w-full px-3 overflow-auto">
         {movie.credits.cast.map((cast: Casts) => (
           <div key={movie.id}>
             <div className="w-[140px] rounded-md">
