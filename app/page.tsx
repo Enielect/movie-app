@@ -4,6 +4,8 @@ import { fetchPopularMovies } from "@/tmdb";
 import axios, { Axios } from "axios";
 import GenreProvider from "./contexts/GenreProvider";
 import MovieWrapper from "./ui/MovieWrapper";
+import { Suspense } from "react";
+import Loader from "./ui/Loader";
 
 //wnat i noticed here, you can't use async/await in a client component.
 
@@ -14,10 +16,12 @@ export default async function Page() {
     <div className="bg-[#03030a] overflow-auto">
       {/* included the genreprovider to update the genre id on click of a particular genre button */}
       {/* add the side menu */}
-      <SearchMobile />
+      <Suspense fallback={<Loader />}>
+        <SearchMobile />
+      </Suspense>
       <GenreList />
       <div>
-        <MovieWrapper/>
+        <MovieWrapper />
       </div>
     </div>
   );
