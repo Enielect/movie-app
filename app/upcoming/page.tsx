@@ -1,10 +1,19 @@
 import { GoBack } from "@/app/ui/back";
+import axios from "axios";
+import UpcomingWrapper from "../ui/UpcomingWrapper";
 
-export default function Page() {
+async function fetchUpcoming() {
+  const res = await axios(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`
+  );
+  return res.data.results;
+}
+export default async function Page() {
+  const movies = await fetchUpcoming();
   return (
     <div>
       <GoBack />
-      This is the About page
+      <UpcomingWrapper movies={movies} />
     </div>
   );
 }

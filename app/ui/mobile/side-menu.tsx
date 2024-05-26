@@ -49,7 +49,12 @@ export default function SideMenu({
         className="px-[20px] py-[10px] rounded-md text-center w-full hover:bg-orange-500 hover:border-orange-500 border bg-orange-600 bg-opacity-40"
         aria-label="login"
       >
-        <Link href={"/login"}> Log in</Link>
+        <div onClick={() => setIsModalOpen((c) => !c)} className="w-full">
+          <Link className="w-full block"  href={"/login"}>
+            {" "}
+            Log in
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ export default function Sidebar() {
         </ul>
 
         <div>
-          <Link href="/login"></Link>
+          <Link href="/signin"></Link>
         </div>
       </nav>
     </div>

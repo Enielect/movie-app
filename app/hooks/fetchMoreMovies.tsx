@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export function useFetchMoreMovies(
-  existingMovies: Movies[],
   setMovies: React.Dispatch<React.SetStateAction<Movies[]>>
 ) {
   const [hasMore, setHasMore] = useState(true);
