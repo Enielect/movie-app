@@ -34,8 +34,10 @@ export default function GenreList() {
     fetchGenres();
   }, []);
 
+  console.log(genres)
+
   return (
-    <div className="flex flex-wrap gap-[10px] justify-center pt-[10px] pb-[25px]">
+    <div className="flex w-full overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
       {genreLoading && <Loader />}
       {!genreLoading &&
         genres?.map((genre: Genre) => (
