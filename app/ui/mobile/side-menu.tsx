@@ -14,9 +14,9 @@ export default function SideMenu({
       <ul aria-label="links" className="w-full space-y-3">
         <li
           onClick={() => setIsModalOpen((c) => !c)}
-          className="px-[20px] py-[10px] rounded-md w-full text-center  bg-orange-500 bg-opacity-40 border-orange-500 border"
+          className="px-[20px] py-[10px] rounded-md w-full text-center  hover:bg-orange-500  hover:border-orange-500 hover:bg-opacity-40 bg-gray-500 bg-opacity-40 border"
         >
-          <Link className="w-full inline-block" href={"/"}>
+          <Link className="w-full inline-block" href={"/"}> 
             Genres
           </Link>
         </li>

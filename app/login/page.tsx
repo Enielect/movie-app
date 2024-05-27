@@ -1,7 +1,5 @@
 import { auth, signOut } from "@/auth";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
 export default async function Page() {
   const session = await auth();
 
