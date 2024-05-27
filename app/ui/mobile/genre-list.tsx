@@ -24,7 +24,7 @@ export default function GenreList() {
         );
         console.log(genresFetch.data.genres);
         setGenres(genresFetch.data.genres);
-        setGenreId(genresFetch.data.genres[1].id);
+        setGenreId(genresFetch.data.genres[0].id);
         setGenreLoading(false);
 
       } catch (error) {
@@ -34,7 +34,6 @@ export default function GenreList() {
     fetchGenres();
   }, []);
 
-  console.log(genres)
 
   return (
     <div className="flex w-full overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
@@ -48,7 +47,7 @@ export default function GenreList() {
             }}
             key={genre.id}
             activeStyle={`${
-              genreId === genre.id ? "border-[2px] border-white" : "border-none"
+              genreId === genre.id ? "background-gradient" : "border-none"
             }`}
           >
             {genre.name}

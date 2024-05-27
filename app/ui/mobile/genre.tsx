@@ -9,13 +9,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Genre({ children, activeStyle, ...rest }: ButtonProps) {
   return (
-    <div className="background-gradient p-[2px] rounded-[9px] h-[35px] w-fit">
+    <div className={clsx(" p-[2px] rounded-[9px] h-[35px] w-fit", activeStyle)}>
       <button
         {...rest}
-        className={clsx(
-          activeStyle,
+        className={
           "bg-yellow-300 rounded-[9px] px-[5px] whitespace-nowrap w-fit text-black h-full"
-        )}
+        }
       >
         {children}
       </button>
