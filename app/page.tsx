@@ -20,7 +20,7 @@ export default async function Page() {
         <SearchMobile />
       </Suspense>
       <GenreList />
-      <div>
+      <div className="overflow-auto">
         <MovieWrapper />
       </div>
     </div>
