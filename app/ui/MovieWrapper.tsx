@@ -21,7 +21,7 @@ export default function MovieWrapper() {
   useEffect(() => console.log(searchedMovies), [searchedMovies]);
 
   return (
-    <div className="mx-[15px]">
+    <div>
       {loading && <Loader />}
       <InfiniteScroll
         hasMore={hasMore}
@@ -30,27 +30,29 @@ export default function MovieWrapper() {
         loader={<Loader />}
       >
         {/* we were having a problem with lagging in the scrolling and the solution was just to remove the div and render the elements directly */}
-        {!loading && searchedMovies.length === 0
-          ? moviesGenreFilter.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                src={movie.poster_path}
-                rating={movie.vote_average}
-                title={movie.title}
-                id={movie.id}
-                className="mx-[15px]"
-              />
-            ))
-          : searchedMovies.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                src={movie.poster_path}
-                rating={movie.vote_average}
-                title={movie.title}
-                id={movie.id}
-                className="mx-[15px]"
-              />
-            ))}
+        <div className="mx-[15px] md:grid md:grid-cols-3 gap-[15px] lg:grid-cols-4  ">
+          {!loading && searchedMovies.length === 0
+            ? moviesGenreFilter.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  src={movie.poster_path}
+                  rating={movie.vote_average}
+                  title={movie.title}
+                  id={movie.id}
+                  className="mx-[15px]"
+                />
+              ))
+            : searchedMovies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  src={movie.poster_path}
+                  rating={movie.vote_average}
+                  title={movie.title}
+                  id={movie.id}
+                  className="mx-[15px]"
+                />
+              ))}
+        </div>
       </InfiniteScroll>
     </div>
   );

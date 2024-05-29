@@ -26,7 +26,6 @@ export default function GenreList() {
         setGenres(genresFetch.data.genres);
         setGenreId(genresFetch.data.genres[0].id);
         setGenreLoading(false);
-
       } catch (error) {
         console.error(error);
       }
@@ -34,9 +33,8 @@ export default function GenreList() {
     fetchGenres();
   }, []);
 
-
   return (
-    <div className="flex w-full overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
+    <div className="flex md:flex md:flex-wrap md:place-items-center w-full overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
       {genreLoading && <Loader />}
       {!genreLoading &&
         genres?.map((genre: Genre) => (
