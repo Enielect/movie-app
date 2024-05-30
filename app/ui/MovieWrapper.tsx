@@ -21,13 +21,15 @@ export default function MovieWrapper() {
   useEffect(() => console.log(searchedMovies), [searchedMovies]);
 
   return (
-    <div>
+    <div className="overflow-auto h-full">
       {loading && <Loader />}
       <InfiniteScroll
         hasMore={hasMore}
         dataLength={moviesGenreFilter.length}
         next={() => fetchMoreData(genreUrl)}
         loader={<Loader />}
+        // style={{height: '40rem'}}
+        height={500}
       >
         {/* we were having a problem with lagging in the scrolling and the solution was just to remove the div and render the elements directly */}
         <div className="mx-[15px] md:grid md:grid-cols-3 gap-[15px] lg:grid-cols-4  ">

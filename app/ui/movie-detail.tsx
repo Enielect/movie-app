@@ -5,7 +5,7 @@ import { BASE_IMAGE_URL } from "../constants/constants";
 //for now manage the Movies Type.
 export default function MovieDetail({ movie }: { movie: Movies }) {
   return (
-    <div>
+    <div className="w-[10px">
       <GoBack />
       <div className="w-full relative">
         <Image
