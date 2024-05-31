@@ -20,6 +20,7 @@ export default function UpcomingWrapper({ movies }: { movies: Movies[] }) {
         next={() => fetchMoreData(upcomingUrl)}
         hasMore={hasMore}
         loader={<Loader />}
+        height={500}
       >
         {upComingMovies.map((movie: Movies) => (
           <MovieCard

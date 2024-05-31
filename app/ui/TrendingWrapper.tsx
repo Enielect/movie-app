@@ -20,6 +20,7 @@ export default function TrendingWrapper({ movies }: { movies: Movies[] }) {
         next={() => fetchMoreData(popularUrl)}
         hasMore={hasMore}
         loader={<Loader />}
+        height={500}
       >
         {TrendingMovies.map((movie: Movies) => (
           <MovieCard
