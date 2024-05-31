@@ -16,7 +16,7 @@ export default function MovieCard({
 }) {
   return (
     //learned how to use the transition better with tailwind for changing background size
-    <div className="md:w-[fit]">
+    <div className="md:w-[fit] overflow-hidden">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="28"
