@@ -36,7 +36,7 @@ export default function GenreList() {
   return (
     <>
       {genreLoading && <Loader />}
-      <div className="flex md:flex-wrap md:items-center md:justify-center overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
+      <div className="flex md:flex-wrap items-center md:items-center md:justify-center overflow-auto gap-[10px] px-[9px] py-[15px]">
         {!genreLoading &&
           genres?.map((genre: Genre) => (
             <Genre
@@ -46,7 +46,7 @@ export default function GenreList() {
               }}
               key={genre.id}
               activeStyle={`${
-                genreId === genre.id ? "background-gradient" : "border-none"
+                genreId === genre.id ? "background-gradient " : "border-none"
               }`}
             >
               {genre.name}
