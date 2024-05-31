@@ -9,11 +9,16 @@ import Loader from "./ui/Loader";
 
 //wnat i noticed here, you can't use async/await in a client component.
 
+/**
+ * Renders the Page component.
+ * 
+ * @returns The rendered Page component.
+ */
 export default async function Page() {
   // console.log(movies);
 
   return (
-    <div className="bg-[#03030a] overflow-auto">
+    <div className="bg-[#03030a] overflow-hidden">
       {/* included the genreprovider to update the genre id on click of a particular genre button */}
       {/* add the side menu */}
       <Suspense fallback={<Loader />}>
