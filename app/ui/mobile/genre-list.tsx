@@ -34,23 +34,25 @@ export default function GenreList() {
   }, []);
 
   return (
-    <div className="flex md:flex md:flex-wrap md:place-items-center w-full overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
+    <>
       {genreLoading && <Loader />}
-      {!genreLoading &&
-        genres?.map((genre: Genre) => (
-          <Genre
-            onClick={() => {
-              setGenreId(genre.id);
-              genreId !== genre.id && setLoading(true);
-            }}
-            key={genre.id}
-            activeStyle={`${
-              genreId === genre.id ? "background-gradient" : "border-none"
-            }`}
-          >
-            {genre.name}
-          </Genre>
-        ))}
-    </div>
+      <div className="flex md:flex-wrap md:items-center md:justify-center overflow-auto gap-[10px] px-[9px] pt-[10px] pb-[25px]">
+        {!genreLoading &&
+          genres?.map((genre: Genre) => (
+            <Genre
+              onClick={() => {
+                setGenreId(genre.id);
+                genreId !== genre.id && setLoading(true);
+              }}
+              key={genre.id}
+              activeStyle={`${
+                genreId === genre.id ? "background-gradient" : "border-none"
+              }`}
+            >
+              {genre.name}
+            </Genre>
+          ))}
+      </div>
+    </>
   );
 }
