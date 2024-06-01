@@ -29,7 +29,7 @@ export default function MovieCard({
       </svg>
       <Link href={`/moviedetail/${id}`} className={className}>
         <div
-          style={{ backgroundImage: `url('${BASE_IMAGE_URL}${src}')` }}
+          style={{ backgroundImage: `url('${BASE_IMAGE_URL}/w500${src}')` }}
           className="bg-image bg-cover bg-top relative rounded-lg w-full h-[400px] overflow-hidden duration-200 ease-in-out hover:bg-[length:105%] box-shadow-element"
         >
           <div className="px-[10px] flex w-full justify-between items-center pb-[10px] absolute bottom-0">

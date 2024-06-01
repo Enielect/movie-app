@@ -3,33 +3,41 @@ import { GoBack } from "@/app/ui/back";
 import { BASE_IMAGE_URL } from "../constants/constants";
 
 //for now manage the Movies Type.
-export default function MovieDetail({ movie }: { movie: Movies }) {
+export default function MovieDetail({
+  movie,
+  backdrop,
+}: {
+  movie: Movies;
+  backdrop: { file_path: string };
+}) {
   return (
     <div className="w-[10px">
       <GoBack />
-      <div className="w-full relative">
+      <div className="w-full h-[30rem] md:h-[40rem] relative">
         <Image
-          src={`${BASE_IMAGE_URL}${movie.backdrop_path}`}
+          src={`${BASE_IMAGE_URL}/original${movie.backdrop_path}`}
           width={300}
-          height={200}
+          height={100}
           alt="back-drop of movie"
-          className="w-full"
+          className="w-full h-[30rem] md:h-[40rem] object-center"
         />
-        <p className="absolute bottom-0 font-bold w-full text-xl text-center">
+        <p className="absolute bottom-0 font-bold w-full text-3xl md:text-7xl text-center">
           {movie.title}
         </p>
       </div>
       <div className="mt-[25px] ">
-        <div className="px-[20px] text-center">{movie.overview}</div>
+        <div className="px-[20px] text-center text-xl">{movie.overview}</div>
         <div className="my-[30px] flex flex-col items-center">
-          <div className="border mb-[30px] border-orange-600 bg-orange-400 bg-opacity-30 text-white rounded-full w-fit px-3 py-3">
-            Release Date: {movie.release_date}
+          <div className=" mb-[30px] background-gradient p-[2px] bg-opacity-30 text-white rounded-full w-fit ">
+            <div className="bg-[#242424] w-full h-full px-3 rounded-full py-3">
+              Release Date: {movie.release_date}
+            </div>
           </div>
           {/* genre */}
           <ul className="flex gap-2">
             {movie.genres.map((genre) => (
               <li
-                className="px-[10px] py-[8px] rounded-full w-fit text-white bg-orange-600"
+                className="px-[10px] py-[8px] rounded-full w-fit text-white bg-[#242424]"
                 key={genre.id}
               >
                 {genre.name}
@@ -45,7 +53,7 @@ export default function MovieDetail({ movie }: { movie: Movies }) {
           <div key={movie.id}>
             <div className="w-[140px] rounded-md">
               <Image
-                src={`${BASE_IMAGE_URL}${cast.profile_path}`}
+                src={`${BASE_IMAGE_URL}/w500${cast.profile_path}`}
                 alt="casts"
                 width={300}
                 height={300}

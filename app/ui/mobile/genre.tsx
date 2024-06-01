@@ -13,7 +13,7 @@ export default function Genre({ children, activeStyle, ...rest }: ButtonProps) {
       <button
         {...rest}
         className={
-          "bg-yellow-300 rounded-[9px] px-[5px] whitespace-nowrap w-fit text-black h-full"
+          "bg-[#242424] rounded-[9px] px-[8px] whitespace-nowrap w-fit text-white font-bold h-full"
         }
       >
         {children}
