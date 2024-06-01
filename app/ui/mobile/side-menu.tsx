@@ -7,7 +7,7 @@ export default function SideMenu({
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <div className="py-[20px] flex flex-col justify-between items-center px-[20px] fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-90 z-10">
+    <div className="py-[20px] flex flex-col justify-between items-center px-[20px] fixed top-0 left-0 w-screen h-[100dvh] bg-black bg-opacity-90 z-10">
       <Link
         href="/"
         aria-label="logo"
