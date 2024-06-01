@@ -4,15 +4,18 @@ import { useState } from "react";
 import Button from "@/app/ui/Navigate_button";
 import SideMenu from "@/app/ui/mobile/side-menu";
 import { useWindowScroll } from "@uidotdev/usehooks";
+import { usePathname } from "next/navigation";
 
 export default function ShowSideBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [{ x, y }, scrollTo] = useWindowScroll();
+  const pathname = usePathname();
+  const currentRoute = pathname.split("/")[1];
   // const [scroll, setScroll] = useState(0);
 
   return (
     <div>
-      {isModalOpen && <SideMenu setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && <SideMenu currentRoute={currentRoute} setIsModalOpen={setIsModalOpen} />}
       <Button
         className=" left-[15px] bg-blue-600 z-20"
         onClick={() => setIsModalOpen((c) => !c)}
@@ -40,7 +43,9 @@ export default function ShowSideBar() {
         )}
       </Button>
       <Button
-        className={`right-[15px] bg-red-300 ${y !== null && y > 6000 ? "block" : "hidden"}`}
+        className={`right-[15px] bg-red-300 ${
+          y !== null && y > 6000 ? "block" : "hidden"
+        }`}
         onClick={() => scrollTo({ left: 0, top: 0, behavior: "smooth" })}
       >
         <svg
