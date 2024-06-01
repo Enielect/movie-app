@@ -19,7 +19,7 @@ export default function MovieDetail({
           width={300}
           height={100}
           alt="back-drop of movie"
-          className="w-full h-[30rem] md:h-[40rem] object-center"
+          className="w-full h-[25rem] md:h-[40rem] object-center"
         />
         <p className="absolute bottom-0 font-bold w-full text-3xl md:text-7xl text-center">
           {movie.title}
