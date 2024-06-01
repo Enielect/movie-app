@@ -21,14 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`} >
+      <body className={`${inter.className} overflow-hidden`}>
         <GenreProvider>
-          <div className="w-screen h-screen ">
-            {/* <Header /> */}
+          {/* <Header /> */}
 
-            <div>{children}</div>
-            <ShowSideBar />
-          </div>
+          <div>{children}</div>
+          <ShowSideBar />
         </GenreProvider>
       </body>
     </html>
