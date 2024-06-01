@@ -29,7 +29,7 @@ export default function MovieWrapper() {
         next={() => fetchMoreData(genreUrl)}
         loader={<Loader />}
         // style={{height: '40rem'}}
-        height={500}
+        height={700}
       >
         {/* we were having a problem with lagging in the scrolling and the solution was just to remove the div and render the elements directly */}
         <div className="mx-[15px] md:grid md:grid-cols-3 gap-[15px] lg:grid-cols-4  ">
