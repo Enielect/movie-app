@@ -21,8 +21,10 @@ interface Casts {
   profile_path: string;
   original_name: string;
   character: string;
+  credit_id: number;
 }
 
 interface Credits {
   cast: Casts[];
+  credit_it: number;
 }
