@@ -22,16 +22,18 @@ export default function TrendingWrapper({ movies }: { movies: Movies[] }) {
         loader={<Loader />}
         height={700}
       >
-        {TrendingMovies.map((movie: Movies) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            src={movie.poster_path}
-            rating={movie.vote_average}
-            title={movie.title}
-            className="mx-[14px]"
-          />
-        ))}
+        <div className="md:grid md:grid-cols-3 gap-[15px] lg:grid-cols-4">
+          {TrendingMovies.map((movie: Movies) => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              src={movie.poster_path}
+              rating={movie.vote_average}
+              title={movie.title}
+              className="mx-[14px]"
+            />
+          ))}
+        </div>
       </InfiniteScroll>
     </div>
   );
