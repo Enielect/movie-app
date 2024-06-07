@@ -3,23 +3,17 @@ import { GoBack } from "@/app/ui/back";
 import { BASE_IMAGE_URL } from "../constants/constants";
 
 //for now manage the Movies Type.
-export default function MovieDetail({
-  movie,
-  backdrop,
-}: {
-  movie: Movies;
-  backdrop: { file_path: string };
-}) {
+export default function MovieDetail({ movie }: { movie: Movies }) {
   return (
-    <div className="w-[10px">
+    <div className="h-screen overflow-auto">
       <GoBack />
-      <div className="w-full h-[30rem] md:h-[40rem] relative">
+      <div className="w-full h-auto md:h-[82vh] flex justify-center relative">
         <Image
           src={`${BASE_IMAGE_URL}/original${movie.backdrop_path}`}
-          width={300}
+          width={800}
           height={100}
           alt="back-drop of movie"
-          className="w-full h-[25rem] md:h-[40rem] object-center"
+          className="w-full h-full object-center"
         />
         <p className="absolute bottom-0 font-bold w-full text-3xl md:text-7xl text-center">
           {movie.title}
@@ -48,16 +42,20 @@ export default function MovieDetail({
       </div>
       {/* {credits.cast(cast => )} */}
       <p className="font-bold py-6 text-center text-2xl">Cast</p>
-      <div className="flex gap-3 w-full px-3 overflow-auto">
+      <div className="flex gap-3 w-full px-3 custom-scroll-bar overflow-auto">
         {movie.credits.cast.map((cast: Casts) => (
-          <div key={movie.id}>
+          <div key={cast.credit_id}>
             <div className="w-[140px] rounded-md">
               <Image
-                src={`${BASE_IMAGE_URL}/w500${cast.profile_path}`}
+                src={
+                  cast.profile_path
+                    ? `${BASE_IMAGE_URL}/w500${cast.profile_path}`
+                    : "/no-image.png"
+                }
                 alt="casts"
                 width={300}
                 height={300}
-                className="rounded-lg"
+                className="rounded-lg h-[220px]"
               />
             </div>
             <div className="text-center ">
