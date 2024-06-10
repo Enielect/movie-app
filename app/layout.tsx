@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ShowSideBar from "./ui/ShowSidebar";
 import GenreProvider from "./contexts/GenreProvider";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
         <GenreProvider>
-          {/* <Header /> */}
-
           <div>{children}</div>
           <ShowSideBar />
         </GenreProvider>
