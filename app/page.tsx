@@ -17,15 +17,15 @@ export default async function Page() {
     <div className="bg-[#03030a] md:grid overflow-hidden md:grid-cols-[250px_auto]">
       {/* included the genreprovider to update the genre id on click of a particular genre button */}
       {/* add the side menu */}
-      
+
       <div className="hidden md:block">
         <SideMenu display="desktop" />
       </div>
       <div>
+        <SearchMobile />
         <Suspense fallback={<Loader />}>
-          <SearchMobile />
+          <GenreList />
         </Suspense>
-        <GenreList />
         <div className="overflow-auto">
           <MovieWrapper />
         </div>

@@ -10,6 +10,7 @@ export function useFetchMovies() {
     Context
   ) as GenreContextType;
   const [moviesGenreFilter, setMovies] = useState<Movies[]>([]);
+  const [networkError, setNetworkError] = useState(false);
 
   useEffect(() => {
     async function fetchMovies() {
@@ -21,6 +22,11 @@ export function useFetchMovies() {
         },
       });
 
+      if (!response.data) {
+        setNetworkError(true);
+        return;
+      }
+
       genreId !== 0 && setMovies(response.data.results);
 
       setLoading(false);
@@ -28,12 +34,7 @@ export function useFetchMovies() {
     fetchMovies();
   }, [genreId]);
 
-  
 
-  // useEffect(() => {
-  //   console.log(moviesGenreFilter);
-  //   console.log(genreId);
-  // }, [moviesGenreFilter, genreId]);
 
-  return { moviesGenreFilter, setMovies};
+  return { moviesGenreFilter, setMovies, networkError };
 }
