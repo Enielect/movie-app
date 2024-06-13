@@ -1,4 +1,3 @@
-import { GoBack } from "@/app/ui/back";
 import { fetchPopularMovies } from "@/tmdb";
 import TrendingWrapper from "../ui/TrendingWrapper";
 
