@@ -10,6 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useFetchMoreMovies } from "../hooks/fetchMoreMovies";
 import useSearchedStore from "../store/searchStore";
 import NetworkError from "./NetworkError";
+import { BounceLoader } from "react-spinners";
 
 // { movies }: { movies: Movies[] }
 export default function MovieWrapper() {
@@ -37,12 +38,19 @@ export default function MovieWrapper() {
   if (networkError) return <NetworkError />;
   return (
     <div className="overflow-auto h-full">
-      {loading && <Loader />}
       <InfiniteScroll
         hasMore={hasMore}
         dataLength={moviesGenreFilter.length}
         next={() => fetchMoreData(genreUrl)}
-        loader={<Loader />}
+        loader={
+          <BounceLoader
+            color="#ef7e15"
+            loading={true}
+            size={50}
+            aria-label="loading Spinner"
+            data-testid="loader"
+          />
+        }
         // style={{height: '40rem'}}
         height={viewportSize - 190}
       >

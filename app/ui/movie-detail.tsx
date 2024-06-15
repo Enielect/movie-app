@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GoBack } from "@/app/ui/back";
 import { BASE_IMAGE_URL } from "../constants/constants";
+import Loading from "../trending/loading";
 
 //for now manage the Movies Type.
 export default function MovieDetail({ movie }: { movie: Movies }) {
