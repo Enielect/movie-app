@@ -13,7 +13,6 @@ export default function SearchMobile() {
   const params = new URLSearchParams(searchParams);
 
   const handleSearch = useDebouncedCallback((value: string) => {
-    console.log("searching...");
     if (value) params.set("search", value);
     else params.delete("search");
 
@@ -50,7 +49,9 @@ export default function SearchMobile() {
         <input
           className="mx-[20px] h-[35px] pl-[10px] rounded-xl text-lg tracking-wide text-black"
           type="text"
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleSearch(e.target.value)
+          }
           defaultValue={searchParams.get("search")?.toString()}
           placeholder="Search Movie..."
         />

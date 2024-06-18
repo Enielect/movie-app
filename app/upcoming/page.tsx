@@ -12,7 +12,6 @@ export default async function Page() {
   const movies = await fetchUpcoming();
   return (
     <div>
-      <GoBack />
       <UpcomingWrapper movies={movies} />
     </div>
   );

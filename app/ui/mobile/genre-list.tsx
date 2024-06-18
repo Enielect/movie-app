@@ -4,13 +4,16 @@ import { Context } from "@/app/contexts/GenreProvider";
 import Genre from "@/app/ui/mobile/genre";
 import { BASE_URL } from "@/tmdb";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import Loader from "../Loader";
+import { BounceLoader } from "react-spinners";
+
 
 export default function GenreList() {
   const { genreId, setGenreId, setLoading, genres, setGenres } = useContext(
     Context
   ) as GenreContextType;
+
   const [genreLoading, setGenreLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -22,7 +25,6 @@ export default function GenreList() {
         const genresFetch = await axios.get(
           `${BASE_URL}/genre/movie/list?language=en&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
         );
-        console.log(genresFetch.data.genres);
         setGenres(genresFetch.data.genres);
         setGenreId(genresFetch.data.genres[0].id);
         setGenreLoading(false);
@@ -35,7 +37,7 @@ export default function GenreList() {
 
   return (
     <>
-      {genreLoading && <Loader />}
+      {/* {genreLoading && <Loader />} */}
       <div className="flex md:flex-wrap items-center md:items-center md:justify-center overflow-auto gap-[10px] px-[9px] py-[15px]">
         {!genreLoading &&
           genres?.map((genre: Genre) => (
