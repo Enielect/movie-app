@@ -11,17 +11,23 @@ export default function UpcomingWrapper({ movies }: { movies: Movies[] }) {
   const upcomingUrl = `${BASE_URL}/movie/upcoming?language=en-US`;
   const [upComingMovies, setUpComingMovies] = useState(movies);
   const { hasMore, fetchMoreData } = useFetchMoreMovies(setUpComingMovies);
-  const [viewportSize, setViewportSize] = useState<number>(window.innerHeight);
+  const [viewportSize, setViewportSize] = useState<number>(0);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    // Function to update viewport size
+    const updateViewportSize = () => {
       setViewportSize(window.innerHeight);
-    });
+    };
 
+    // Initial setting of viewport size
+    updateViewportSize();
+
+    // Event listener to update viewport size on window resize
+    window.addEventListener("resize", updateViewportSize);
+
+    // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("resize", () => {
-        setViewportSize(window.innerHeight);
-      });
+      window.removeEventListener("resize", updateViewportSize);
     };
   }, []);
 
