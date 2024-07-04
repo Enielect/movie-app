@@ -6,23 +6,27 @@ import { usePathname } from "next/navigation";
 
 export default function SideMenu({
   setIsModalOpen,
+  currentRoute,
   display,
 }: {
   setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   display: string;
+  currentRoute: string;
 }) {
   const pathname = usePathname();
-  const currentRoute = pathname.split("/")[1];
-  console.log(pathname === '/')
+  // const currentRouten = pathname.split("/")[1];
+  console.log(pathname === "/");
   const Links = ["Genres", "Trending", "Upcoming", "Favourites"];
 
   const buttonProps: { onClick?: () => void } = {};
-  if (display !== "desktop") {
+  if (display !== "desktop" && setIsModalOpen) {
     buttonProps.onClick = () => setIsModalOpen((c) => !c);
   }
   return (
     <div
-      className={`py-[40px] flex flex-col justify-between items-center px-[20px] h-[100dvh] md:bg-[#03030a] top-0 left-0 ${display === 'mobile' && "w-screen h-[100dvh] fixed"} bg-black bg-opacity-90 z-10`}
+      className={`py-[40px] flex flex-col justify-between items-center px-[20px] h-[100dvh] md:bg-[#03030a] top-0 left-0 ${
+        display === "mobile" && "w-screen h-[100dvh] fixed"
+      } bg-black bg-opacity-90 z-10`}
     >
       <Link href="/" aria-label="logo" {...buttonProps}>
         <Image src="/logo.png" width={80} height={80} alt="logo" />
@@ -34,8 +38,8 @@ export default function SideMenu({
             {...buttonProps}
             className={`px-[20px] py-[10px] rounded-md w-full text-center ${
               ((pathname === "/" && link.toLowerCase() == "genres") ||
-              (currentRoute == link.toLowerCase())) &&
-                "bg-orange-500 border-orange-500"
+                currentRoute == link.toLowerCase()) &&
+              "bg-orange-500 border-orange-500"
             }  hover:bg-orange-500   hover:border-orange-500 hover:bg-opacity-40 bg-gray-500 bg-opacity-40 border`}
           >
             <Link

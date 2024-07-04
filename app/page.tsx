@@ -19,7 +19,7 @@ export default async function Page() {
       {/* add the side menu */}
 
       <div className="hidden md:block">
-        <SideMenu display="desktop" />
+        <SideMenu currentRoute="/" display="desktop" />
       </div>
       <div>
         <SearchMobile />

@@ -15,9 +15,9 @@ export default function ShowSideBar() {
 
   return (
     <div>
-      {isModalOpen && <SideMenu currentRoute={currentRoute} setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && <SideMenu display="" currentRoute={currentRoute} setIsModalOpen={setIsModalOpen} />}
       <Button
-        className=" left-[15px] bg-blue-600 z-20"
+        className=" left-[15px] bg-blue-600 md:hidden z-20"
         onClick={() => setIsModalOpen((c) => !c)}
       >
         {!isModalOpen ? (
