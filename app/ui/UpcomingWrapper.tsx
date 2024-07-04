@@ -3,9 +3,9 @@
 import { BASE_URL } from "@/tmdb";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Loader from "./Loader";
-import MovieCard from "./movie-card";
-import { useFetchMoreMovies } from "../hooks/fetchMoreMovies";
+import Loader from "@/app/ui/Loader";
+import MovieCard from "@/app/ui/movie-card";
+import { useFetchMoreMovies } from "@/app/hooks/fetchMoreMovies";
 
 export default function UpcomingWrapper({ movies }: { movies: Movies[] }) {
   const upcomingUrl = `${BASE_URL}/movie/upcoming?language=en-US`;

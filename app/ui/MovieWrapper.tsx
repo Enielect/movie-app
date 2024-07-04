@@ -1,15 +1,13 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import MovieCard from "./movie-card";
-import axios from "axios";
-import { Context } from "../contexts/GenreProvider";
-import Loader from "./Loader";
-import { url, useFetchMovies } from "../hooks/fetchMovies";
+import MovieCard from "@/app/ui/movie-card";
+import { Context } from "@/app/contexts/GenreProvider";
+import { url, useFetchMovies } from "@/app/hooks/fetchMovies";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useFetchMoreMovies } from "../hooks/fetchMoreMovies";
-import useSearchedStore from "../store/searchStore";
-import NetworkError from "./NetworkError";
+import { useFetchMoreMovies } from "@/app/hooks/fetchMoreMovies";
+import useSearchedStore from "@/app/store/searchStore";
+import NetworkError from "@/app/ui/NetworkError";
 import { BounceLoader } from "react-spinners";
 
 // { movies }: { movies: Movies[] }

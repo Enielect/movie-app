@@ -1,6 +1,6 @@
 import { GoBack } from "@/app/ui/back";
 import axios from "axios";
-import UpcomingWrapper from "../ui/UpcomingWrapper";
+import UpcomingWrapper from "@/app/ui/UpcomingWrapper";
 
 async function fetchUpcoming() {
   const res = await axios(

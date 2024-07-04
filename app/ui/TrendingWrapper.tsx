@@ -1,9 +1,9 @@
 "use client";
 
-import MovieCard from "../ui/movie-card";
+import MovieCard from "@/app/ui/movie-card";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Loader from "../ui/Loader";
-import { useFetchMoreMovies } from "../hooks/fetchMoreMovies";
+import Loader from "@/app/ui/Loader";
+import { useFetchMoreMovies } from "@/app/hooks/fetchMoreMovies";
 import { BASE_URL } from "@/tmdb";
 import { useEffect, useState } from "react";
 

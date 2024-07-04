@@ -22,7 +22,9 @@ export default async function Page() {
         <SideMenu currentRoute="/" display="desktop" />
       </div>
       <div>
-        <SearchMobile />
+        <Suspense fallback={<Loader />}>
+          <SearchMobile />
+        </Suspense>
         <Suspense fallback={<Loader />}>
           <GenreList />
         </Suspense>
