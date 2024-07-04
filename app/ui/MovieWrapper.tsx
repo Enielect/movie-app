@@ -17,17 +17,23 @@ export default function MovieWrapper() {
   const { fetchMoreData, hasMore } = useFetchMoreMovies(setMovies);
   const { searchedMovies } = useSearchedStore() as { searchedMovies: Movies[] };
 
-  const [viewportSize, setViewportSize] = useState<number>(window.innerHeight);
+  const [viewportSize, setViewportSize] = useState<number>(0);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    // Function to update viewport size
+    const updateViewportSize = () => {
       setViewportSize(window.innerHeight);
-    });
+    };
 
+    // Initial setting of viewport size
+    updateViewportSize();
+
+    // Event listener to update viewport size on window resize
+    window.addEventListener("resize", updateViewportSize);
+
+    // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("resize", () => {
-        setViewportSize(window.innerHeight);
-      });
+      window.removeEventListener("resize", updateViewportSize);
     };
   }, []);
 
