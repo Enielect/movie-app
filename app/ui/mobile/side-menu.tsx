@@ -8,14 +8,16 @@ export default function SideMenu({
   setIsModalOpen,
   currentRoute,
   display,
+  isModalOpen = false,
 }: {
   setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   display: string;
   currentRoute: string;
+  isModalOpen?: boolean;
 }) {
   const pathname = usePathname();
   // const currentRouten = pathname.split("/")[1];
-  console.log(pathname === "/");
+  console.log(pathname === "/");  
   const Links = ["Genres", "Trending", "Upcoming", "Favourites"];
 
   const buttonProps: { onClick?: () => void } = {};
@@ -24,8 +26,10 @@ export default function SideMenu({
   }
   return (
     <div
-      className={`py-[40px] flex flex-col justify-between items-center px-[20px] h-[100dvh] md:bg-[#03030a] top-0 left-0 ${
+      className={`py-[40px] flex flex-col justify-between ${display === 'mobile' && 'md:hidden'} items-center transition-all px-[20px] h-[100dvh] md:bg-[#03030a] top-0 left-0 ${
         display === "mobile" && "w-screen h-[100dvh] fixed"
+      } ${display === "mobile" && !isModalOpen ? "left-[-4000px]" : ""} ${
+        display === "mobile" && isModalOpen ? "left-0" : ""
       } bg-black bg-opacity-90 z-10`}
     >
       <Link href="/" aria-label="logo" {...buttonProps}>
